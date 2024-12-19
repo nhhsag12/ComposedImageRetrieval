@@ -8,7 +8,7 @@ import torchvision.transforms.functional as F
 from torch.utils.data import Dataset
 from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
 
-base_path = Path(__file__).absolute().parents[1].absolute()
+base_path = Path("/kaggle/input/fashioniqdataset")
 
 
 def _convert_image_to_rgb(image):
@@ -138,7 +138,7 @@ class FashionIQDataset(Dataset):
         self.triplets: List[dict] = []
         for dress_type in dress_types:
             with open(base_path / 'fashionIQ_dataset' / 'captions' / f'cap.{dress_type}.{split}.json') as f:
-                self.triplets.extend(json.load(f))
+                self.triplets.extend( json.load(f))
 
         # get the image names
         self.image_names: list = []
