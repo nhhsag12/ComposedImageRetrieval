@@ -1,40 +1,9 @@
-# CLIP4Cir (ACM TOMM 2023)
+# Fashion Composed Image Retrieval
 
-### Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features
+### Inspired by Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2308.11485)
 [![GitHub Stars](https://img.shields.io/github/stars/ABaldrati/CLIP4Cir?style=social)](https://github.com/ABaldrati/CLIP4Cir)
-
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/composed-image-retrieval-using-contrastive/image-retrieval-on-fashion-iq)](https://paperswithcode.com/sota/image-retrieval-on-fashion-iq?p=composed-image-retrieval-using-contrastive)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/composed-image-retrieval-using-contrastive/image-retrieval-on-cirr)](https://paperswithcode.com/sota/image-retrieval-on-cirr?p=composed-image-retrieval-using-contrastive)
-
-This is the **official repository** for the [**paper**](https://arxiv.org/abs/2308.11485) "*Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features*".
-
-
-## Citation
-If you make use of our work, please cite our paper:
-```bibtex
-@article{baldrati2023composed,
-  title={Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features},
-  author={Baldrati, Alberto and Bertini, Marco and Uricchio, Tiberio and Bimbo, Alberto Del},
-  journal={ACM Transactions on Multimedia Computing, Communications and Applications},
-  publisher={ACM New York, NY}
-}
-```
-
-If you are interested in Composed Image Retrieval (CIR) take a look also a look to our most recent work:
-[**Zero-Shot Composed Image Retrieval with Textual Inversion (ICCV 2023)**](https://arxiv.org/abs/2303.15247)
-[![Repo](https://badgen.net/badge/icon/GitHub?icon=github&label)](https://github.com/miccunifi/SEARLE)
-```bibtex
-@misc{baldrati2023zeroshot,
-      title={Zero-Shot Composed Image Retrieval with Textual Inversion}, 
-      author={Alberto Baldrati and Lorenzo Agnolucci and Marco Bertini and Alberto Del Bimbo},
-      year={2023},
-      eprint={2303.15247},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
 
 ## About The Project
 
@@ -104,7 +73,7 @@ found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/l
 1. Clone the repo
 
 ```sh
-git clone https://github.com/ABaldrati/CLIP4Cir
+git clone https://github.com/nhhsag12/ComposedImageRetrieval.git
 ```
 
 2. Install Python dependencies
@@ -285,15 +254,25 @@ python src/cirr_test_submission.py
    --transform targetpad
 ```
 
+### Deploy preparation
+#### Download fine-tuned model and dataset
+You need to download my [fine-tuned model](https://husteduvn-my.sharepoint.com/:f:/g/personal/hoang_nh226041_sis_hust_edu_vn/EtUdQh3kKLNAmtEUcrO6CyUByaQT3SidmiisNHEy7hiAPw?e=AdAXXI) and [FashionIQ dataset](https://husteduvn-my.sharepoint.com/:f:/g/personal/hoang_nh226041_sis_hust_edu_vn/EuqyJjEC-BNAnA7xYm64RBoB0c4STu1Wf2bLBaZWLQpxtA?e=xpVvzm) before running the app
 
-## Authors
 
-* [**Alberto Baldrati**](https://scholar.google.it/citations?hl=en&user=I1jaZecAAAAJ)
-* [**Marco Bertini**](https://scholar.google.it/citations?user=SBm9ZpYAAAAJ&hl=en)
-* [**Tiberio Uricchio**](https://scholar.google.it/citations?user=XHZLRdYAAAAJ&hl=en)
-* [**Alberto Del Bimbo**](https://scholar.google.it/citations?user=bf2ZrFcAAAAJ&hl=en)
+#### Setup ```.env``` file
+There are somethings you need to setup before running the apps by Streamlit
 
-## Acknowledgements
+- Milvus uri (Ask me to get inserted vector database)
+- Milvus token (Ask me to get inserted vector database)
+- Gemini token
+- CLIP model path
+- Combiner model path
 
-This work was partially supported by the European Commission under European Horizon 2020 Programme, grant number 101004545 - ReInHerit.
+
+### Deploy
+To use the app after doing all the setup I said before, run the following command
+```shell
+streamlit run src/app.py
+```
+
 
