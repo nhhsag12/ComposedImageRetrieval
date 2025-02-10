@@ -9,6 +9,9 @@ from torch.utils.data import Dataset
 from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
 
 base_path = Path("/kaggle/input/fashioniqdataset")
+input_path = Path("/kaggle/input/fashioniqdataset")
+output_path = Path("kaggle/working")
+source_path = Path("/kaggle/input/siglip4ir-code2")
 
 
 def _convert_image_to_rgb(image):
@@ -155,10 +158,10 @@ class FashionIQDataset(Dataset):
                 reference_name = self.triplets[index]['candidate']
 
                 if self.split == 'train':
-                    reference_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{reference_name}.jpg"
+                    reference_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{reference_name}.png"
                     reference_image = self.preprocess(PIL.Image.open(reference_image_path))
                     target_name = self.triplets[index]['target']
-                    target_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{target_name}.jpg"
+                    target_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{target_name}.png"
                     target_image = self.preprocess(PIL.Image.open(target_image_path))
                     return reference_image, target_image, image_captions
 
@@ -167,13 +170,13 @@ class FashionIQDataset(Dataset):
                     return reference_name, target_name, image_captions
 
                 elif self.split == 'test':
-                    reference_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{reference_name}.jpg"
+                    reference_image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{reference_name}.png"
                     reference_image = self.preprocess(PIL.Image.open(reference_image_path))
                     return reference_name, reference_image, image_captions
 
             elif self.mode == 'classic':
                 image_name = self.image_names[index]
-                image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{image_name}.jpg"
+                image_path = base_path / 'fashionIQ_dataset' / 'images' / f"{image_name}.png"
                 image = self.preprocess(PIL.Image.open(image_path))
                 return image_name, image
 
